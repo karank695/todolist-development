@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../src/home.css">
+    <link rel="stylesheet" href="/home.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
                 <input type="text" name="description" id="desc" placeholder="Let make your app to work">
             </div>
             <div class="water-container">
-                
+
             </div>
             <div class="cat-date">
                 <div id="cat">
@@ -40,33 +40,40 @@
                     <input type="date" name="date">
                 </div>
             </div>
-        <div id="btn">
-            <button type="submit" id="add" class="bt">
-                <i class="fa-solid fa-plus"></i>
-                <p class="btn-text">ADD TASK</p>
-            </button>
-            <a href="/deleteTask">
-            <div id="del" class="bt">
-                <i class="fa-solid fa-trash"></i>
-                <p class="btn-text">DELETE TASK</p>
+            <div id="btn">
+                <button type="submit" id="add" class="bt">
+                    <i class="fa-solid fa-plus"></i>
+                    <p class="btn-text">ADD TASK</p>
+                </button>
+                    <div id="del" class="bt">
+                        <i class="fa-solid fa-trash"></i>
+                        <p class="btn-text">DELETE TASK</p>
+                    </div>
             </div>
-            </a>
-        </div>
         </form>
-        <div class="tasks-list">
-            <div class="desc">
-                <div class="checkbox-desc">
-                    <input type="checkbox" class="check">
-                    <span>hi this is Karan</span>
+        <div class="tasklist-container">
+            <% for(let list of todos_list){ %>
+            <div class="tasks-list">
+                <div class="desc">
+                    <div class="checkbox-desc">
+                        <div id="cd">
+                            <input class="checkbox" id="<%= list._id %>" type="checkbox" class="check">
+                            <span><%= list.description %></span>
+                        </div>
+                        <div id="cal-date">
+                            <p class="date"><i class="fa-solid fa-calendar-days"></i><span><%= list.due_date %></span></p>
+                        </div>
+                    </div>
                 </div>
-                <p class="date"><i class="fa-solid fa-calendar-days"></i>7 July 2023</p>
+                <div class="category">
+                    <button class="btn-cat"><%= list.category %></button>
+                </div>
             </div>
-            <div class="category">
-                <button class="btn-cat">Social</button>
-            </div>
+            <% } %>
         </div>
     </div>
-    <script src="../src/home.js"></script>
+
+    <script src="/home.js"></script>
 </body>
 
 </html>

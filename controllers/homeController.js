@@ -1,13 +1,15 @@
-const PersonDetail = require('../models/person');
+const Todo = require('../models/todo');
 const path = require('path');
-let pd;
-PersonDetail.find().then((person_details) => {
-    pd = person_details;
-
-}).catch((err) => {
-    console.log(err);
-})
 module.exports.home = (req, res) => {
-    res.render(path.join(__dirname, '../views/home.ejs/'),{person_details:pd});
-    
+    Todo.find().then((todos) => {
+        todos_list = todos;
+        console.log(todos)
+        res.render(path.join(__dirname, '../views/home.ejs/'), {
+            todos_list: todos
+        });
+
+    }).catch((err) => {
+        console.log(err);
+    })
+
 }
