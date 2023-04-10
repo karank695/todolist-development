@@ -1,6 +1,7 @@
 const Todo = require('../models/todo');
 const path = require('path');
 module.exports.home = (req, res) => {
+    //getting task list from database
     Todo.find().then((todos) => {
         todos_list = todos;
         console.log(todos)
